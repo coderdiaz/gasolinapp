@@ -1,12 +1,15 @@
 import { Controller } from '@nestjs/common';
 import { Get, Param } from '@nestjs/common';
+import { StationsRepository } from './stations.repository';
 
 @Controller('stations')
-export class StationController {
+export class StationsController {
+
+    constructor(private readonly repository: StationsRepository) { }
 
     @Get()
-    async find(@Param('latitude') latitude: string, @Param('latitude') longitude: string) {
-
+    async findAll(@Param('latitude') latitude: string, @Param('latitude') longitude: string) {
+        return this.repository.findAll(latitude, longitude);
     }
 
 }
