@@ -3,7 +3,7 @@ import { StationsRepository } from './stations.repository';
 import { StationsController } from './stations.controller';
 
 @Module({
-    controllers: [StationsController],
-    providers: [StationsRepository],
+  controllers: [StationsController],
+  providers: [StationsRepository]
 })
-export class StationsModule { }
+export class StationsModule {}

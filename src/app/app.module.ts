@@ -6,6 +6,6 @@ import { StationsModule } from 'stations/stations.module';
 @Module({
   imports: [StationsModule],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService]
 })
-export class AppModule { }
+export class AppModule {}

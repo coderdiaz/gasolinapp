@@ -4,12 +4,13 @@ import { StationsRepository } from './stations.repository';
 
 @Controller('stations')
 export class StationsController {
+  constructor(private readonly repository: StationsRepository) {}
 
-    constructor(private readonly repository: StationsRepository) { }
-
-    @Get()
-    async findAll(@Param('latitude') latitude: string, @Param('latitude') longitude: string) {
-        return this.repository.findAll(latitude, longitude);
-    }
-
+  @Get()
+  async findAll(
+    @Param('latitude') latitude: string,
+    @Param('latitude') longitude: string
+  ) {
+    return this.repository.findAll(latitude, longitude);
+  }
 }
