@@ -1,38 +1,9 @@
-# gasolineras
+# gasolinapp ⛽
 
 ## Description
 
-an-app-that-shows-gas-price
+A backend application created with [NestJs](https://nestjs.com/) and Typescript.
 
-## Installation
+The app will fetch fuel prices of all gas stations from Spain, will map them to a more friendly entity and will store them into a database.
 
-```bash
-$ npm install
-```
-
-## Running the app
-
-```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-npm run start:prod
-```
-
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
-
+The app will provide fuel stations through an API depending on their location and filter fuel stations by fuel type.
