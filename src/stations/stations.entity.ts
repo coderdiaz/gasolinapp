@@ -21,5 +21,5 @@ export class Station {
 
   @Column() longitude: string;
 
-  @Column() products: Fuel[];
+  @Column() fuels: Array<Fuel>;
 }

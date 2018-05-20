@@ -1,7 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
 @Entity()
-export class Fuel {
+export class Type {
   @PrimaryGeneratedColumn() id: number;
 
   @Column() name: string;

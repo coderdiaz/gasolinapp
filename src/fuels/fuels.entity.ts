@@ -1,11 +1,11 @@
 import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
-import { Fuel } from './fuel.entity';
+import { Type } from './type.entity';
 
 @Entity()
-export class Product {
+export class Fuel {
   @PrimaryGeneratedColumn() id: number;
 
-  @Column() fuel: Fuel;
+  @Column() type: Type;
 
   @Column() price: string;
 }
