@@ -12,7 +12,7 @@ The app will provide fuel stations through an API depending on their location an
 
 Every response will have the same format:
 
-```json
+```js
 {
   "data": [],
   // or
