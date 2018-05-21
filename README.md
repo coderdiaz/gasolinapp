@@ -35,7 +35,7 @@ Available stations that the client can ask for.
 
 This example shows a response with all the available fields in a station:
 
-```json
+```js
 {
   "data": [
     {
@@ -66,7 +66,7 @@ This example shows a response with all the available fields in a station:
 
 Available fuel types with which the client can query the stations.
 
-```json
+```js
 {
   "data": [
     {
