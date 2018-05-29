@@ -2,7 +2,7 @@ import { Injectable, HttpService } from '@nestjs/common';
 import { Station } from './stations.entity';
 import { Fuel } from '../fuels/fuels.entity';
 import { stat } from 'fs';
-import { Type } from './type.entity';
+import { Type } from '../fuels/types.entity';
 
 @Injectable()
 export class StationsMapper {
@@ -22,6 +22,8 @@ export class StationsMapper {
     station.state = json['Provincia'];
     station.latitude = json['Latitud'];
     station.longitude = json['Longitud (WGS84)'];
+
+    const fuels: Array<Fuel> = new Array<Fuel>();
 
     return station;
   }
