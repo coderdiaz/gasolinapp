@@ -1,4 +1,4 @@
-# GasolinApp ⛽
+# gasolinapp ⛽
 
 ## Description
 
