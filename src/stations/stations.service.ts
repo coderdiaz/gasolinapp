@@ -14,7 +14,8 @@ export class StationsService {
 
   constructor(
     private readonly httpService: HttpService,
-    private readonly stationsMapper: StationsMapper
+    private readonly stationsMapper: StationsMapper,
+    private readonly stationsRepository: StationsRepository
   ) {}
 
   async loadStations() {

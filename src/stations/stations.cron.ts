@@ -1,26 +1,21 @@
 import { CronJob } from 'cron';
 import { Injectable } from '@nestjs/common';
+import { StationsService } from './stations.service';
 
 @Injectable()
 export class StationsCron {
-  cron: CronJob;
+  constructor(private readonly stationsService: StationsService) {}
 
   start() {
-    this.cron = new CronJob(
-      // '00 30 05 * * 1-7',
-      '* * * * * *',
+    new CronJob(
+      // Runs every day (Monday through Sunday) at 05:30:00 AM.
+      '00 30 05 * * 1-7',
       () => {
-        /*
-          * Runs every weekday (Monday through Sunday)
-          * at 05:30:00 AM. 
-          */
-        console.log('You will see this message every second');
+        this.stationsService.loadStations();
       },
       null,
-      false,
-      'America/Los_Angeles'
+      true,
+      'Europe/Madrid'
     );
-
-    this.cron.start();
   }
 }
