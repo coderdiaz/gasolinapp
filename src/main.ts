@@ -2,7 +2,7 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app/app.module';
 import { StationsCron } from 'stations/stations.cron';
 import { INestApplication } from '@nestjs/common';
-import { TypesService } from 'fuels/types.service';
+import { TypesService } from 'types/types.service';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);

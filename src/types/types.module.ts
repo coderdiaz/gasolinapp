@@ -8,4 +8,4 @@ import { TypesService } from './types.service';
   controllers: [TypesController],
   providers: [TypesRepository, TypesService]
 })
-export class StationsModule {}
+export class TypesModule {}
