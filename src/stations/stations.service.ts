@@ -1,7 +1,7 @@
 import { Injectable, HttpService } from '@nestjs/common';
-import { Observable } from 'rxjs';
 import { StationsMapper } from './stations.mapper';
-import { StationsRepository } from './stations.repository';
+import { TypesRepository } from 'types/types.repository';
+import { Station } from './stations.entity';
 
 @Injectable()
 export class StationsService {
@@ -15,18 +15,19 @@ export class StationsService {
   constructor(
     private readonly httpService: HttpService,
     private readonly stationsMapper: StationsMapper,
-    private readonly stationsRepository: StationsRepository
+    private readonly typesRepository: TypesRepository
   ) {}
 
-  async loadStations() {
+  async loadStations(): Promise<Station> {
     try {
       const response = await this.httpService
         .get(this.url, this.config)
         .toPromise();
 
-      const stations = response.data.map(this.stationsMapper.toStations);
-
-      console.log(response.data);
+      const types = await this.typesRepository.findAll();
+      return await response.data.map(json => {
+        return this.stationsMapper.toStations(json, types);
+      });
     } catch (error) {
       console.error(error);
     }

@@ -6,7 +6,7 @@ import { Type } from './types.entity';
 export class TypesService {
   constructor(private readonly typesRepository: TypesRepository) {}
 
-  async loadTypes() {
+  async createTypes() {
     const types: Array<Type> = new Array<Type>();
     types.push(new Type(2, 'Gasoleo A'));
     types.push(new Type(3, 'Gasoleo B'));

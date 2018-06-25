@@ -7,16 +7,16 @@ import { TypesService } from 'types/types.service';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   await app.listen(3000);
+  createTypes(app);
   startStationsCron(app);
-  loadTypes(app);
+}
+
+async function createTypes(app: INestApplication) {
+  await app.get(TypesService).createTypes();
 }
 
 function startStationsCron(app: INestApplication) {
   app.get(StationsCron).start();
-}
-
-async function loadTypes(app: INestApplication) {
-  await app.get(TypesService).loadTypes();
 }
 
 bootstrap();

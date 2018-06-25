@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
 import { Fuel } from '../types/fuels.entity';
 
 @Entity()
@@ -21,5 +21,6 @@ export class Station {
 
   @Column() longitude: string;
 
+  @OneToMany(type => Fuel, fuel => fuel.station)
   @Column() fuels: Array<Fuel>;
 }

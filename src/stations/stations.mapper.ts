@@ -1,17 +1,18 @@
-import { Injectable, HttpService } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { Station } from './stations.entity';
 import { Fuel } from '../types/fuels.entity';
-import { stat } from 'fs';
 import { Type } from '../types/types.entity';
 
 @Injectable()
 export class StationsMapper {
-  toStations(json: any): Array<Station> {
+  constructor() {}
+
+  toStations(json: any, types: Array<Type>): Array<Station> {
     const jsonArray: Array<any> = json['ListaEESSPrecio'];
-    return jsonArray.map(json => this.toStation(json));
+    return jsonArray.map(json => this.toStation(json, types));
   }
 
-  toStation(json: any): Station {
+  toStation(json: any, types: Array<Type>): Station {
     let station: Station = new Station();
 
     station.name = json['Rótulo'];
@@ -24,6 +25,16 @@ export class StationsMapper {
     station.longitude = json['Longitud (WGS84)'];
 
     const fuels: Array<Fuel> = new Array<Fuel>();
+
+    for (let type of types) {
+      const fuel = new Fuel();
+      fuel.price = json[type.name];
+      fuel.station = station;
+      fuel.type = type;
+      fuels.push(fuel);
+    }
+
+    station.fuels = fuels;
 
     return station;
   }
